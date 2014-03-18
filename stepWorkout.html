@@ -1,0 +1,49 @@
+<html>
+<head>
+<!-- 1920px by 1080px is the size this is designed for, the sizes of these layout frames have been hardcoded to display this at 100% with no scrolling needed -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Candal|Amethysta|Euphoria+Script|Ubuntu+Mono">
+    <style>
+      p {
+        font-family: 'Euphoria Script', serif;
+		font-size: 80px;
+		text-align: center;
+		color:#69D2E7;
+      }
+      p.exercise {
+        font-family: 'Candal', serif;
+		font-size: 120px;
+		text-align: center;
+		color:#FA6900;
+      }
+	  p.time {
+        font-family: 'Ubuntu Mono', serif;
+		font-size: 54px;
+		text-align: center;
+		color:#F38630;
+      }
+	  body{
+		background-color:#E0E4CC;
+	  }
+    </style>
+</head>
+<body onload="timer()">
+<script type="text/javascript" src="./workout.js"></script>
+<table border="0">
+  <col width="1200">
+  <col width="800">
+	<tr>
+		<td>
+			<iframe id="Top" width="1200" height="900" frameborder="0" scrolling="no" src="MusicVideos.html"></iframe>	
+		</td>
+		<td>
+			<p class="time" id="Time"></p>
+			<p id="Motivation">Let's Go!!!</p>
+			<p class="exercise" id="Exercises">Basic Step</p>
+		</td>
+	</tr>
+</table>
+
+
+			
+</body>
+</html>
