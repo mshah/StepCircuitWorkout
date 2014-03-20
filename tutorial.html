@@ -1,0 +1,425 @@
+<html>
+<head>
+<!-- 1920px by 1080px is the size this is designed for, the sizes of these layout frames have been hardcoded to display this at 100% with no scrolling needed -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Amethysta|Duru+Sans">
+    <style>
+	h1{
+		color:#DB3556;	
+	}
+	ol{
+		color: #BA1E4A;
+	}
+	a{
+		color: #BA1E4A;
+		text-decoration: none;
+	}
+	h2{
+		color:#88BAA3;
+	}
+	body{
+		background-color:#EAEDE4;
+	}
+      p {
+        font-family: 'Amethysta', serif;
+		font-size: 20px;
+		color:#254F4D;
+      }
+	  xmp{
+		font-family: 'Duru Sans', sans-serif;
+		background-color:#E4E6C3;
+		border:1px solid #BA1E4A;
+		font-size: 16px;
+		color: #BA1E4A;
+	  }
+    </style>
+</head>
+<body>
+<h1>Circuit Training Javascript Webpage</h1>
+<ol>
+<li><a href="#1">Build the page </a></li>
+<li><a href="#2">Adding the Data</a></li>
+<li><a href="#3">Make It Dyanmic</a></li>
+<li><a href="#4">Second Iteration: Polish It Up</a></li>
+</ol>
+<h2 id="1">Build the Page </h2>
+<p>
+	The first thing you want to do is create an html document. Let's call ours "workout.html."
+	</p>
+	<xmp>
+<html>
+	<head>
+		<!-- 1920px by 1080px is the size this is designed for, the sizes of these 
+		layout frames have been hardcoded to display this at 100% -->
+	</head>
+	<body>
+	</body>
+</html>	
+	</xmp>
+	<p>
+	I commented this for a size, I plan on using this on my living room tv so I've just added a comment about the layout. Since we'll be using music videos we will want to specify the size to avoid resizing when we have lower resolution videos.
+</p>
+
+<p>
+	We want to create the format for our page. The easiest way is to make a table and stick our elements into there. You'll be able to control the size of your table the same way you would for any other html table.
+	</p>
+	<xmp>
+<html>
+<head>
+<!-- 1920px by 1080px is the size this is designed for, the sizes of these 
+layout frames have been hardcoded to display this at 100% -->
+</head>
+<body>
+<table border="0">
+  <col width="1200">
+  <col width="800">
+	<tr>
+		<td>
+		</td>
+		<td>
+		</td>
+	</tr>
+</table>
+</body>
+</html>	
+	</xmp>		
+<p>
+	I've made the decision to split up the screen this way given the size display I intend to use. So one of the column widths is specified to 1200, I want this for the video. We'll use this size again later to show our video at that size. You could set these to be different sizes, or just fix it to 720 or another common size. The right side will be the counter, motivational phrases, and exercises. I fixed the width on the right, which probably should just be left to float.
+</p>
+<h2 id="2">Adding the Data</h2>
+<p>
+	Now we'll set up the display and set the intial display.
+	</p>
+	<xmp>
+<html>
+<head>
+<!-- 1920px by 1080px is the size this is designed for, the sizes of these 
+layout frames have been hardcoded to display this at 100% with no scrolling needed -->
+</head>
+<body>
+<table border="0">
+  <col width="1200">
+  <col width="800">
+	<tr>
+		<td>
+			<iframe id="Top" width="1200" height="900" frameborder="0" scrolling="no" src="MusicVideos.html"></iframe>	
+		</td>
+		<td>
+			<p class="time" id="Time"></p>
+			<p id="Motivation">Let's Go!!!</p>
+			<p class="exercise" id="Exercises">Basic Step</p>
+		</td>
+	</tr>
+</table>
+</body>
+</html>	
+	</xmp>
+	<p>
+	We set up paragraphs for the time, motivation, and exercise. We also created an iframe to host the video. Here's the iframe code, MusicVideos.html, it uses the html5 video tag. Hardcoding these sizes will make it look bad on your phone, so you can play with that.
+	</p>
+		<xmp>
+<html>
+<head>
+<!-- 1200px by 900px is the size this is designed for, the sizes of these 
+layout frames have been hardcoded to display this at 100% with no scrolling needed -->
+</head>
+<body onload="pickNewVideo()">
+<script type="text/javascript" src="./workout.js"></script>
+<video id="Music" width="1200" height="900" autoplay onended="pickNewVideo()">
+  <source src="./Videos/Sneaker Pimps - Spin Spin Sugar.mp4" type="video/mp4">
+</video>
+</body>
+</html>		
+		</xmp>
+<p>
+	We set up the intial video that will play to give it a source to load properly but when the page loads the pickNewVideo() method will be called. We've also set the video tag with an id, set autoplay and set the function onended to call our same pickNewVideo() method. The video tag also sets the width and height for what will load in the iframe. We've included the file workout.js which will be the javascript that drives the page. Let's take a look at this file. Everything is stored in arrays, our javascript will just randomly pick music videos from an array for us to view. You should be able to view tihs page in a webbrowser and see random videos picked each time.
+</p>
+<xmp>
+var index = 0;
+MusicVideos = new Array();
+MusicVideos[index++] = "./Videos/LCD Soundsystem - Daft Punk Is Playing At My House.mp4";
+</xmp>
+<p>
+	In this array you can keep adding the videos you want. I use the save from net chrome extension (http://en/savefrom.net/) to save the videos so I can also use this offline. You could easy embed the youtube links into your workout, this also avoids the commercials of the that. So start out putting a few videos in there, you can always come back and fill that up. Let's create a similar array and fill the circuit exercises and motivations.
+</p>	
+<xmp>
+var index = 0;
+Circuit = new Array();
+Circuit[index++] = "High Knees";
+Circuit[index++] = "Jumping Jacks";
+
+
+var index = 0;
+Motivation = new Array();
+Motivation[index++] = "You must do the thing you think you cannot do.";
+</xmp>	
+<h2 id="3">Make It Dynamic</h2>
+<p>
+	Let's see how to pick a random music video, this will be similar to how we pick random exercises.
+</p>		
+<xmp>
+function pickNewVideo(){
+	var video = document.getElementById("Music");
+	// pick a random video from the warmup sections
+	var randomMusic=Math.floor(Math.random()*MusicVideos.length)
+	var nextVideo = MusicVideos[randomMusic];
+	video.src = nextVideo;
+}
+</xmp>
+<p>
+	Here we use javascripts Math package to generate a random number, and pick a random index into the MusicVideos array, then we update the video source labeled "Music" to this new video. Now we'll create a similar method to pick the new exercises and movations we want, except here we don't have something that "ends" we just have a time interval between exercises. Pick an interval you like, i used 30 seconds per exercise.
+</p>	
+<xmp>
+var renew = setInterval(function(){
+		var randomSaying=Math.floor(Math.random()*Motivation.length)
+		var motivationalPhrase = Motivation[randomSaying];
+		document.getElementById("Motivation").innerHTML = motivationalPhrase;
+		
+		var drill=Math.floor(Math.random()*Circuit.length)
+		var circuitDrill = Circuit[drill];
+		document.getElementById("Exercises").innerHTML = circuitDrill;
+
+},30000);
+</xmp>
+<p>
+	The above javascript creates a function that uses a callback, it runs every 30000 miliseconds, or every 30 seconds. When this gets called it replaces the elements we earlier labeled in workout.html. We'll use a similar callback function for our counter and each time it's called (once a second) display the updated time.
+</p>	
+<xmp>
+var start = new Date().getTime();
+function timer(){
+	var days, hours, minutes, seconds;	 
+	// get tag element 
+	// update the tag with id "countdown" every 1 second
+	setInterval(function () {	 
+		// find the amount of "seconds" between start time and current time
+		var current_time = new Date().getTime();
+		var seconds_left = (current_time - start) / 1000;
+	 
+		// do some time calculations
+		seconds_left = seconds_left % 3600;		 
+		minutes = parseInt(seconds_left / 60);
+		seconds = parseInt(seconds_left % 60);
+		
+		var timeLeft = new Date() - start;
+		document.getElementById("Time").innerHTML = minutes + ":" + seconds;
+	}, 1000);
+}
+</xmp>
+<p>
+	We start by defining the start time by creating a new Date object. By default this will give us the current time. Here we don't want the months, days or years; we're only interested in the time so we just take that from the new Date object. This then takes the difference and then format this and update the Time element. Now let's return to workout.html. We need to update this to use your javascript like we did MusicVideos.html.
+</p>	
+<xmp>
+<html>
+<head>
+<!-- 1920px by 1080px is the size this is designed for, the sizes of these 
+layout frames have been hardcoded to display this at 100% with no scrolling needed -->
+</head>
+<body onload="timer()">
+<script type="text/javascript" src="./workout.js"></script>
+<table border="0">
+  <col width="1200">
+  <col width="800">
+	<tr>
+		<td>
+			<iframe id="Top" width="1200" height="900" frameborder="0" scrolling="no" src="MusicVideos.html"></iframe>	
+		</td>
+		<td>
+			<p class="time" id="Time"></p>
+			<p id="Motivation">Let's Go!!!</p>
+			<p class="exercise" id="Exercises">Basic Step</p>
+		</td>
+	</tr>
+</table>
+</body>
+</html>
+</xmp>
+<p>
+	We've updated to run the timer() onload. This is good, but I wanted to style the text more. I'm running this on a different machine so I can't rely on my own fonts being installed, so decided to use google fonts. In the head section of this document you can add your styling.
+</p>	
+<xmp>
+<head>
+<!-- 1920px by 1080px is the size this is designed for, the sizes of these 
+layout frames have been hardcoded to display this at 100% with no scrolling needed -->
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Candal|Amethysta|Euphoria+Script|Ubuntu+Mono">
+    <style>
+      p {
+        font-family: 'Euphoria Script', serif;
+		font-size: 80px;
+		text-align: center;
+		color:#69D2E7;
+      }
+      p.exercise {
+        font-family: 'Candal', serif;
+		font-size: 120px;
+		text-align: center;
+		color:#FA6900;
+      }
+	  p.time {
+        font-family: 'Ubuntu Mono', serif;
+		font-size: 54px;
+		text-align: center;
+		color:#F38630;
+      }
+	  body{
+		background-color:#E0E4CC;
+	  }
+    </style>
+</head>
+</xmp>
+<h2 id="4">Second Iteration: Polish It Up</h2>
+
+<p>
+	So after using this there were a couple things I found annoying. Videos would repeat, and you don't really want to hear the same song twice so we'll need to keep track of what has played already. The timer also displays single digit times when they're single digit, which is not what you're used to seeing. Also I want exercises in groups, b/c it gave me 8 sets of burpees in under 10 minutes. I gave up around the third set in a row.
+</p>
+<xmp>
+		var minutesPretty;
+		var secondsPretty;
+		if (minutes < 10){
+			minutesPretty =  "0" + minutes;
+		}	else{
+			minutesPretty = minutes;
+		}
+		if (seconds < 10){
+			secondsPretty =  "0" + seconds;
+		}	else{
+			secondsPretty = seconds;
+		}	
+		console.log("minutesPretty: " + minutesPretty + " secondsPretty: " + secondsPretty);
+		document.getElementById("Time").innerHTML = minutesPretty + ":" + secondsPretty;
+</xmp>
+<p>This adjusts the format to add the extra 0 but this is pretty but bulky. We can use the ternary operator instead.
+</p>
+<xmp>
+		var minutesPretty = (minutes < 10) ? "0" + minutes : minutes;
+		var secondsPretty = (seconds < 10) ? "0" + seconds : seconds;
+</xmp>
+<p>To avoid the video repeats we could store them with a dirty bit instead, that keeps track of if it has played already. We'll create a new object that tracks both the source and if it's played already.
+</p>
+<xmp>
+function musicVideo(source, hasPlayed){
+	this.source = source;
+	this.hasPlayed = hasPlayed;
+}
+MusicVideos = new Array();
+MusicVideos[index++] = new musicVideo("./Videos/Sneaker Pimps - Spin Spin Sugar.mp4", false);
+</xmp>
+<p>We'll need to set and check this if the video hasPlayed in pickNewVideo().
+</p>
+<xmp>
+function pickNewVideo(){
+	var video = document.getElementById("Music");
+	// pick a random video but no repeats
+	var randomMusic=Math.floor(Math.random()*MusicVideos.length)
+	var nextVideo = MusicVideos[randomMusic];
+	console.log("played video " + nextVideo.source + " hasPlayed " + nextVideo.hasPlayed);
+	while(nextVideo.hasPlayed){
+		randomMusic=Math.floor(Math.random()*MusicVideos.length)
+		nextVideo = MusicVideos[randomMusic];
+	}
+	video.src = nextVideo.source;
+	nextVideo.hasPlayed = true;
+	MusicVideos[randomMusic] = nextVideo;
+}
+</xmp>
+<p>Now let's add a warmup and cooldown section. Let's also store the previous exercise so we don't have to do repeats. First we'll rewrite our exercises into three arrays. Then based on the time we'll pick from one of the arrays. I also decided to break up the motivations so they show for more than a minute.
+</p>
+<xmp>
+WarmUp = new Array("Basic Step", "Jumping Jacks", "V Step", "Butt Kicks", "High Knees", "Grapevine");
+Strength = new Array("Push Ups", "Plank", "Wall Sit", "Lunge", "Pike Up", "Mountain Climbers", "Burpees", "Side Plank Right", "Side Plank Left");
+CoolDown = new Array("Abdominal Crunch", "Wall Sit", "Squats", "Pilate Squats", "Right Side Kick", "Left Side Kick", "Cross Jab", "Bird Dog");
+
+var updateMotivation = setInterval(function(){
+	var randomSaying=Math.floor(Math.random()*Motivation.length)
+	var motivationalPhrase = Motivation[randomSaying];
+	document.getElementById("Motivation").innerHTML = motivationalPhrase;
+},75000);
+
+var nextExercise = setInterval(function(){
+	// pick what kind of exercise based on the time
+	var current_time = new Date().getTime();
+	var seconds_left = (current_time - start) / 1000;
+	seconds_left = seconds_left % 3600;		 
+	var minutes = parseInt(seconds_left / 60);
+	var exercise;
+	if (minutes < 5){
+		var drill=Math.floor(Math.random()*WarmUp.length)
+		exercise = WarmUp[drill];	
+	}else if (minute > 12){
+		var drill=Math.floor(Math.random()*CoolDown.length)
+		exercise = CoolDown[drill];
+	}else{
+		var drill=Math.floor(Math.random()*Strength.length)
+		exercise = Strength[drill];		
+	}
+	document.getElementById("Exercises").innerHTML = exercise;
+
+},30000);
+</xmp>
+<p>Let's update nextExercise to not use the same exercise twice in a row. We'll set a variable to keep track of the previous exercise so we can compare it to the randomly selected one.
+<p>
+<xmp>
+var previousExercise = "Basic Step";
+var nextExercise = setInterval(function(){
+	// pick what kind of exercise based on the time
+	var current_time = new Date().getTime();
+	var seconds_left = (current_time - start) / 1000;
+	seconds_left = seconds_left % 3600;		 
+	var minutes = parseInt(seconds_left / 60);
+	console.log("previous " + previousExercise);
+	var exercise = previousExercise;
+	if (exercise === previousExercise){
+		console.log("before exericse: " + exercise + " previous: " + previousExercise);
+	}
+	if (minutes < 5){
+		var drill=Math.floor(Math.random()*WarmUp.length)
+		exercise = WarmUp[drill];
+		while (exercise === previousExercise){
+			drill=Math.floor(Math.random()*WarmUp.length)
+			exercise = WarmUp[drill];
+		}			
+	}else if (minutes > 12){
+		var drill=Math.floor(Math.random()*CoolDown.length)
+		exercise = CoolDown[drill];
+		while (exercise === previousExercise){
+			drill=Math.floor(Math.random()*CoolDown.length)
+			exercise = CoolDown[drill];
+		}		
+	}else{
+		var drill=Math.floor(Math.random()*Strength.length);
+		exercise = Strength[drill];
+		while (exercise === previousExercise){
+			drill=Math.floor(Math.random()*Strength.length);
+			exercise = Strength[drill];
+		}
+	}
+	document.getElementById("Exercises").innerHTML = exercise;
+	previousExercise = exercise;
+},30000);
+</xmp>
+<p>
+	Nice we are pretty much there. Some style things, I updated the page to
+	start with 00:00 with the time instead of being blank at first. I also decided to resize 
+	things a bit so they look better on my display.
+</p>
+<xmp>
+<table border="0">
+  <col width="1200">
+  <col width="800">
+	<tr>
+		<td colspan="2">
+			<p id="Motivation">Let's Go!!!</p>	
+		</td>
+	</tr>  
+	<tr>
+		<td>
+			<iframe id="Top" width="1200" height="900" frameborder="0" scrolling="no" src="MusicVideos.html"></iframe>	
+		</td>
+		<td>
+			<p class="time" id="Time">00:00</p>
+
+			<p class="exercise" id="Exercises">Basic Step</p>
+		</td>
+	</tr>
+</table>
+</xmp>
+</body>
+</html>

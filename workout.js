@@ -1,77 +1,46 @@
-var index = 0;
-Circuit = new Array();
-Circuit[index++] = "Basic Step";
-Circuit[index++] = "High Knees";
-Circuit[index++] = "Jumping Jacks";
-Circuit[index++] = "Wall Sit";
-Circuit[index++] = "Push-Ups";
-Circuit[index++] = "Basic Step";
-Circuit[index++] = "Jumping Jacks";
-Circuit[index++] = "Basic Step";
-Circuit[index++] = "Squat";
-Circuit[index++] = "Lunge";
-Circuit[index++] = "Butt Kicks";
-Circuit[index++] = "Basic Step";
-Circuit[index++] = "Tricept Dip";
-Circuit[index++] = "Plank";
-Circuit[index++] = "Side Plank Right";
-Circuit[index++] = "Basic Step";
-Circuit[index++] = "Side Plan Left";
-Circuit[index++] = "Abdominal Crunch";
-Circuit[index++] = "Basic Step";
-Circuit[index++] = "Jumping Jacks";
-Circuit[index++] = "Mountain Climbers";
-Circuit[index++] = "Pike Up";
-Circuit[index++] = "Basic Step";
-Circuit[index++] = "Pilate Squats";
-Circuit[index++] = "V Step";
-Circuit[index++] = "Repeater Knees";
-Circuit[index++] = "Right Side Kick";
-Circuit[index++] = "Left Side Kick";
-Circuit[index++] = "Burpee";
-
+WarmUp = new Array("Basic Step", "Jumping Jacks", "V Step", "Butt Kicks", "High Knees");
+Strength = new Array("Push Ups", "Plank", "Wall Sit", "Lunge", "Pike Up", "Mountain Climbers", "Burpees", "Side Plank Right", "Side Plank Left");
+CoolDown = new Array("Abdominal Crunch", "Wall Sit", "Squats", "Pilate Squats", "Right Side Kick", "Left Side Kick", "Jab Hook");
 
 index = 0;
-
+function musicVideo(source, hasPlayed){
+	this.source = source;
+	this.hasPlayed = hasPlayed;
+}
 MusicVideos = new Array();
-MusicVideos[index++] = "./Videos/Alanis Morissette - Head Over Feet (MTV Unplugged) (HD).mp4"
-MusicVideos[index++] = "./Videos/Avril Lavigne - Sk8er Boi.mp4"
-MusicVideos[index++] = "./Videos/DEF LEPPARD - 'Pour Some Sugar On Me' (Official Music Video).mp4"
-MusicVideos[index++] = "./Videos/Eminem - Cleanin' Out My Closet.mp4"
-MusicVideos[index++] = "./Videos/Eminem - Love The Way You Lie ft. Rihanna.mp4"
-MusicVideos[index++] = "./Videos/Eminem - Rap God (Explicit).mp4"
-MusicVideos[index++] = "./Videos/Eminem - Sing For The Moment.mp4"
-MusicVideos[index++] = "./Videos/Eminem - Superman (Clean Version).mp4"
-MusicVideos[index++] = "./Videos/Eminem - The Monster (Explicit) ft. Rihanna.mp4"
-MusicVideos[index++] = "./Videos/Eminem - When I'm Gone.mp4"
-MusicVideos[index++] = "./Videos/Eminem - Without Me.mp4"
-MusicVideos[index++] = "./Videos/Fiona Apple - Not About Love.mp4"
-MusicVideos[index++] = "./Videos/Fiona Apple - Shadowboxer LIVE HD (2012) Los Angeles Greek Theatre.mp4"
-MusicVideos[index++] = "./Videos/Fiona Apple - Sleep To Dream (LIVE).mp4"
-MusicVideos[index++] = "./Videos/Florence   The Machine - Breath Of Life.mp4"
-MusicVideos[index++] = "./Videos/Florence + The Machine - Dog Days Are Over (2010 Version).mp4"
-MusicVideos[index++] = "./Videos/Goo Goo Dolls - 'Name' [Official Video].mp4"
-MusicVideos[index++] = "./Videos/Gwen Stefani - Hollaback Girl (Dirty Version).mp4"
-MusicVideos[index++] = "./Videos/Heavy In Your Arms (LIVE from Bonnaroo, 2011).mp4"
-MusicVideos[index++] = "./Videos/Jimmy Eat World - The Middle.mp4"
-MusicVideos[index++] = "./Videos/Lady Gaga - Paparazzi.mp4"
-MusicVideos[index++] = "./Videos/LCD Soundsystem - Daft Punk Is Playing At My House.mp4"
-MusicVideos[index++] = "./Videos/LCD Soundsystem - Drunk Girls.mp4"
-MusicVideos[index++] = "./Videos/LCD Soundsystem - Losing My Edge.mp4"
-MusicVideos[index++] = "./Videos/Lorde - Buzzcut Season (Live On Letterman).mp4"
-MusicVideos[index++] = "./Videos/Lorde - Royals (US Version).mp4"
-MusicVideos[index++] = "./Videos/Lorde - Team.mp4"
-MusicVideos[index++] = "./Videos/Lorde - Tennis Court.mp4"
-MusicVideos[index++] = "./Videos/Lousy Reputation.mp4"
-MusicVideos[index++] = "./Videos/Mumford and Sons - Little Lion Man.mp4"
-MusicVideos[index++] = "./Videos/Sneaker Pimps - Spin Spin Sugar.mp4"
-MusicVideos[index++] = "./Videos/STEVIE NICKS 'LANDSLIDE' 2006 Australia.mp4"
-MusicVideos[index++] = "./Videos/Suzanne Vega - Toms Diner (Official Music Video).mp4"
-MusicVideos[index++] = "./Videos/The Postal Service - Nothing Better - live Coachella, April 20, 2013.mp4"
-MusicVideos[index++] = "./Videos/The Postal Service - The District Sleeps Alone Tonight (OFFICIAL VIDEO).mp4"
-MusicVideos[index++] = "./Videos/The Postal Service - We Will Become Silhouettes (OFFICIAL VIDEO).mp4"
-MusicVideos[index++] = "./Videos/Train - Drops of Jupiter.mp4"
-MusicVideos[index++] = "./Videos/Weezer - Say It Ain't So.mp4"
+MusicVideos[index++] = new musicVideo("./Videos/Sneaker Pimps - Spin Spin Sugar.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/LCD Soundsystem - Daft Punk Is Playing At My House.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Alanis Morissette - Head Over Feet (MTV Unplugged) (HD).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Avril Lavigne - Sk8er Boi.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/DEF LEPPARD - 'Pour Some Sugar On Me' (Official Music Video).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - Cleanin' Out My Closet.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - Love The Way You Lie ft. Rihanna.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - Rap God (Explicit).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - Sing For The Moment.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - Superman (Clean Version).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - The Monster (Explicit) ft. Rihanna.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - When I'm Gone.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Eminem - Without Me.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Fiona Apple - Not About Love.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Fiona Apple - Shadowboxer LIVE HD (2012) Los Angeles Greek Theatre.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Fiona Apple - Sleep To Dream (LIVE).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Florence   The Machine - Breath Of Life.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Florence + The Machine - Dog Days Are Over (2010 Version).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Goo Goo Dolls - 'Name' [Official Video].mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Gwen Stefani - Hollaback Girl (Dirty Version).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Heavy In Your Arms (LIVE from Bonnaroo, 2011).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Jimmy Eat World - The Middle.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/LCD Soundsystem - Drunk Girls.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/LCD Soundsystem - Losing My Edge.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Lorde - Buzzcut Season (Live On Letterman).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Lorde - Royals (US Version).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Lorde - Team.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Lorde - Tennis Court.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Lousy Reputation.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Mumford and Sons - Little Lion Man.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/The Postal Service - We Will Become Silhouettes (OFFICIAL VIDEO).mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Train - Drops of Jupiter.mp4", false);
+MusicVideos[index++] = new musicVideo("./Videos/Weezer - Say It Ain't So.mp4", false);
 
 var index = 0;
 Motivation = new Array();
@@ -81,7 +50,7 @@ Motivation[index++] = "The only thing that stands between you and what you want 
 Motivation[index++] = "You must do the thing you think you cannot do.";
 Motivation[index++] = "your workouts are important meetings you scheduled with yourself. bosses don't cancel";
 Motivation[index++] = "You have to expect things of yourself before you can do them";
-Motivation[index++] = "Some quit due to slow progress. never grasping the faction that slow progress... is progress";
+Motivation[index++] = "Some quit due to slow progress. never grasping the fact that slow progress... is progress";
 Motivation[index++] = "Attitude is the difference between an ordeal and an adventure";
 Motivation[index++] = "Every accomplishment starts with the decision to try.";
 Motivation[index++] = "we are what we repeatedly do. excellence, then is not an action, but a habit";
@@ -91,31 +60,63 @@ Motivation[index++] = "don't compare yourself to others. compare yourself to the
 Motivation[index++] = "change takes time. give it time.";
 Motivation[index++] = "If anything is worth doing, do it with all your heart.";
 
-function startExercise(){
-	// pick a random exercise video
-	var WorkoutVideo = document.getElementById("Exercise");
-		var randomExerciseVid=Math.floor(Math.random()*Exercises.length)
-		var exerciseVid = Exercises[randomExerciseVid];
-		WorkoutVideo.src = exerciseVid;	
-}
-
 function pickNewVideo(){
 	var video = document.getElementById("Music");
-	// pick a random video from the warmup sections
+	// pick a random video but no repeats
 	var randomMusic=Math.floor(Math.random()*MusicVideos.length)
 	var nextVideo = MusicVideos[randomMusic];
-	video.src = nextVideo;
+	console.log("played video " + nextVideo.source + " hasPlayed " + nextVideo.hasPlayed);
+	while(nextVideo.hasPlayed){
+		randomMusic=Math.floor(Math.random()*MusicVideos.length)
+		nextVideo = MusicVideos[randomMusic];
+	}
+	video.src = nextVideo.source;
+	nextVideo.hasPlayed = true;
+	MusicVideos[randomMusic] = nextVideo;
 }
 
-var renew = setInterval(function(){
-		var randomSaying=Math.floor(Math.random()*Motivation.length)
-		var motivationalPhrase = Motivation[randomSaying];
-		document.getElementById("Motivation").innerHTML = motivationalPhrase;
-		
-		var drill=Math.floor(Math.random()*Circuit.length)
-		var circuitDrill = Circuit[drill];
-		document.getElementById("Exercises").innerHTML = circuitDrill;
+var updateMotivation = setInterval(function(){
+	var randomSaying=Math.floor(Math.random()*Motivation.length)
+	var motivationalPhrase = Motivation[randomSaying];
+	document.getElementById("Motivation").innerHTML = motivationalPhrase;
+},75000);
 
+var previousExercise = "Basic Step";
+var nextExercise = setInterval(function(){
+	// pick what kind of exercise based on the time
+	var current_time = new Date().getTime();
+	var seconds_left = (current_time - start) / 1000;
+	seconds_left = seconds_left % 3600;		 
+	var minutes = parseInt(seconds_left / 60);
+	console.log("previous " + previousExercise);
+	var exercise = previousExercise;
+	if (exercise === previousExercise){
+		console.log("before exericse: " + exercise + " previous: " + previousExercise);
+	}
+	if (minutes < 5){
+		var drill=Math.floor(Math.random()*WarmUp.length)
+		exercise = WarmUp[drill];
+		while (exercise === previousExercise){
+			drill=Math.floor(Math.random()*WarmUp.length)
+			exercise = WarmUp[drill];
+		}			
+	}else if (minutes > 12){
+		var drill=Math.floor(Math.random()*CoolDown.length)
+		exercise = CoolDown[drill];
+		while (exercise === previousExercise){
+			drill=Math.floor(Math.random()*CoolDown.length)
+			exercise = CoolDown[drill];
+		}		
+	}else{
+		var drill=Math.floor(Math.random()*Strength.length);
+		exercise = Strength[drill];
+		while (exercise === previousExercise){
+			drill=Math.floor(Math.random()*Strength.length);
+			exercise = Strength[drill];
+		}
+	}
+	document.getElementById("Exercises").innerHTML = exercise;
+	previousExercise = exercise;
 },30000);
 
 var start = new Date().getTime();
@@ -124,17 +125,19 @@ function timer(){
 	// get tag element 
 	// update the tag with id "countdown" every 1 second
 	setInterval(function () {	 
-		// find the amount of "seconds" between fixed Example date and target
+		// find the amount of "seconds" since we've started
 		var current_time = new Date().getTime();
-		var seconds_left = (start - current_time) / 1000;
+		var seconds_left = (current_time - start) / 1000;
 	 
 		// do some time calculations
 		seconds_left = seconds_left % 3600;		 
-		minutes = -1 * parseInt(seconds_left / 60);
-		seconds = -1 * parseInt(seconds_left % 60);
+		minutes = parseInt(seconds_left / 60);
+		seconds = parseInt(seconds_left % 60);
 		
 		var timeLeft = new Date() - start;
-		document.getElementById("Time").innerHTML = minutes + ":" + seconds;
+		var minutesPretty = (minutes < 10) ? "0" + minutes : minutes;
+		var secondsPretty = (seconds < 10) ? "0" + seconds : seconds;
+		document.getElementById("Time").innerHTML = minutesPretty + ":" + secondsPretty;
 
 	}, 1000);
 }
